@@ -3,30 +3,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form, Input, Checkbox, Button } from "antd";
 import queryString from "query-string";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+import { loginApi } from "../../services/api";
 
 type Inputs = {
   example: string;
   exampleRequired: string;
 };
 export default function Login() {
+  const router = useRouter();
   const [err, errSet] = useState();
   const onSubmit = async (values) => {
-    await axios({
-      method: "post",
-      url: "https://hotel-booking-kohl.vercel.app/api/auth/login",
-      data: queryString.stringify(values),
-    })
+    await loginApi(values)
       .then((result) => {
-        if (typeof window !== "undefined")
-          localStorage.setItem("accessToken", result.data.content);
-        Router.push("/admin");
+        console.log(result);
       })
-      .catch((err) => {
-        {
-          errSet(err?.response.data.message);
-        }
-      });
   };
 
   return (
@@ -140,7 +131,10 @@ export default function Login() {
               </Button>
             </Form.Item>
             <div onClick={() => Router.push("/logout")}>
-            <span>Bạn đã có tài khoản ? <span style={{color:'green', fontSize:15}}>Register</span></span>
+              <span>
+                Bạn đã có tài khoản ?{" "}
+                <span style={{ color: "green", fontSize: 15 }}>Register</span>
+              </span>
             </div>
           </Form>
         </div>
