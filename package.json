@@ -6,7 +6,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "antd": "^5.2.3",
+    "axios": "^1.3.4",
     "next": "latest",
+    "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "yarn": "^1.22.19"
