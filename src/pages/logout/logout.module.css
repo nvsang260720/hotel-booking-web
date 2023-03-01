@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.childContainer {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  min-height: 50vh;
+  max-width: 567px;
+  overflow: hidden;
+  padding: 77px 50px 33px;
+}
+
+.errText {
+  display: block;
+  font-family: monospace;
+  color: red;
+  line-height: 1.2;
+  text-align: center;
+  margin-top: 50;
+}
+
+.logo {
+  display: block;
+  font-family: monospace;
+  line-height: 1.2;
+  text-align: center;
+}
