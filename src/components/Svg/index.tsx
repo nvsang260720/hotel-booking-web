@@ -6,10 +6,11 @@ function Svg({
   name = "logo",
   width = 18,
   height = 18,
-  fill = "#ACAAAA",
+  fill = "#029147",
   onClick = (e: any) => e,
 }) {
   const RequiredSvg = dynamic(import(`/public/assets/svg/${name}.svg`));
+
   if (typeof RequiredSvg == "object") {
     return (
       <div
