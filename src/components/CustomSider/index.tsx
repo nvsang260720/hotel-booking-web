@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import { Svg } from "~/components";
 
-const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 interface MenuItem {
@@ -19,30 +18,20 @@ const menus: MenuItem[] = [
   {
     key: "(Dashboard)",
     title: "Dashboard",
-    icon: <Svg name={"dashboard"} fill={"var(--primary-color)"} />,
+    icon: <Svg name={"dashboard"} fill={"var(--orange)"} />,
     href: "/admin/dashboard",
   },
   {
-    key: "(User)(Policy)",
+    key: "(User)",
     title: "Người dùng",
-    icon: <Svg name={"users"} fill={"var(--primary-color)"} />,
-    submenu: [
-      {
-        key: "(User)",
-        title: "Tài khoản",
-        href: "/admin/users",
-      },
-      {
-        key: "(Policy)",
-        title: "Phân quyền",
-        href: "/admin/policies",
-      },
-    ],
+    icon: <Svg name={"users"} fill={"var(--orange)"} />,
+    href: "/admin/users",
+    submenu: undefined,
   },
   {
     key: "(Category)",
-    title: "Ngành hàng",
-    icon: <Svg name={"categories"} fill={"var(--primary-color)"} />,
+    title: "Thể loại",
+    icon: <Svg name={"categories"} fill={"var(--orange)"} />,
     href: "/admin/categories",
     submenu: undefined,
   },
@@ -50,7 +39,7 @@ const menus: MenuItem[] = [
     key: "(Product)",
     title: "Sản phẩm",
     href: "/admin/products",
-    icon: <Svg name={"products"} fill={"var(--primary-color)"} />,
+    icon: <Svg name={"products"} fill={"var(--orange)"} />,
     submenu: undefined,
   },
 ];
@@ -101,11 +90,7 @@ const CustomSider = ({}) => {
       return (
         <React.Fragment key={item.key}>
           <Menu.Item
-            className={
-              currentPath?.includes(item.href || "#")
-                ? "!bg-[#0291471a] !text-primary-color"
-                : ""
-            }
+            className={"!bg-[color:var(--black-bg)]"}
             key={item.key}
             {...(item.icon && {
               icon: item.icon,
@@ -113,10 +98,10 @@ const CustomSider = ({}) => {
             onClick={() => item.href && router.push(item.href)}
           >
             <span
-              className={`hover:text-primary-color text-[14px] ${
+              className={`hover:text-[color:var(--orange)] text-[14px] ${
                 currentPath === item.href
-                  ? "text-[color:var(--primary-color)] selected-menu-item"
-                  : "text-[color:var(--mid-gray)]"
+                  ? "text-[color:var(--orange)] selected-menu-item"
+                  : "text-white"
               } ml-[10px] inline-block`}
             >
               {item.title}
@@ -128,9 +113,11 @@ const CustomSider = ({}) => {
   };
 
   return (
-    <Sider className={"!bg-[color:var(--black-bg)] main-sider"}>
+    <Sider className={"main-sider"}>
       <div
-        className={"fixed left-0 top-0 bottom-0 hover:overflow-auto w-[200px]"}
+        className={
+          "!bg-[color:var(--black-bg)]  fixed left-0 top-0 bottom-0 hover:overflow-auto w-[200px]"
+        }
       >
         <Link href="/">
           <div className={" h-[68px] px-5 flex cursor-pointer "}>
@@ -142,14 +129,17 @@ const CustomSider = ({}) => {
             >
               <Svg
                 name={"logo"}
-                fill={"var(--orange"}
+                fill={"var(--orange)"}
                 width={120}
                 height={120}
               />
             </div>
           </div>
         </Link>
-        <Menu mode="inline" openKeys={openKeys}>
+        <Menu
+          mode="inline"
+          openKeys={openKeys}
+        >
           {renderMenus()}
         </Menu>
       </div>
