@@ -1,7 +1,7 @@
 import { Layout, Menu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useCallback, useState, useEffect, useMemo } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Svg } from "~/components";
 
 const { Sider } = Layout;
@@ -136,10 +136,7 @@ const CustomSider = ({}) => {
             </div>
           </div>
         </Link>
-        <Menu
-          mode="inline"
-          openKeys={openKeys}
-        >
+        <Menu mode="inline" openKeys={openKeys}>
           {renderMenus()}
         </Menu>
       </div>

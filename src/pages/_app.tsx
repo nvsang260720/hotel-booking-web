@@ -6,7 +6,7 @@ import { SWRConfig } from "swr";
 import type { AppProps } from "next/app";
 import DefaultLayout from "~/components/DefaultLayout";
 
-const routesNoNeedAuth = ["/login"];
+const routesNoNeedAuth = ["/login", "/register"];
 
 function MyApp({
   Component,

@@ -1,17 +1,9 @@
 import style from "./login.module.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Form, Input, Checkbox, Button } from "antd";
-import queryString from "query-string";
-import Router, { useRouter } from "next/router";
+import { Form, Input, Button } from "antd";
+import { useRouter } from "next/router";
 import { loginApi } from "../../services/api";
-import Image from "next/image";
 import { Svg } from "~/components";
 
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
 export default function Login() {
   const router = useRouter();
   const onSubmit = async (values: any) => {
@@ -59,7 +51,7 @@ export default function Login() {
                 Login
               </Button>
             </Form.Item>
-            <div onClick={() => Router.push("/logout")}>
+            <div onClick={() => router.push("/register")}>
               <span>
                 Bạn đã có tài khoản ?{" "}
                 <span style={{ color: "green", fontSize: 15 }}>Register</span>

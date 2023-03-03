@@ -1,23 +1,19 @@
 import style from "./logout.module.css";
 import axios from "axios";
 import { useState } from "react";
-import { Form, Input, Checkbox, Button, Alert } from "antd";
+import { Form, Input, Button } from "antd";
 import queryString from "query-string";
 import Router from "next/router";
 
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
 export default function Login() {
   const [err, errSet] = useState();
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: any) => {
     await axios({
       method: "post",
       url: "https://hotel-booking-kohl.vercel.app/api/admin/account",
       data: queryString.stringify(values),
     })
-      .then((result) => {
+      .then(() => {
         alert("Đăng kí thành công");
         Router.push("/login");
       })

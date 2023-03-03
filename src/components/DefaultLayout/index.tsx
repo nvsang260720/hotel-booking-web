@@ -1,16 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
 import { Layout } from "antd";
 import { CustomHeader, CustomSider } from "~/components";
-import { AxiosHeaders } from "axios";
-
 
 const { Content } = Layout;
 
 const DefaultLayout: React.FC = ({
   children,
-  currentUser,
-  pageProps,
-  globalSettings,
 }: {
   children?: JSX.Element;
   currentUser?: any;
