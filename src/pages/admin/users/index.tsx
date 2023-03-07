@@ -20,7 +20,7 @@ const Users: React.FC = () => {
 
   const handleDelete = async (record: any) => {
     return await deleteUserApi(record.id)
-      .then((e: any) => {
+      .then(() => {
         getUser();
       })
       .catch((error) => console.log(error));

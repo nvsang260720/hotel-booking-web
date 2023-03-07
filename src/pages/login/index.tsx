@@ -7,8 +7,8 @@ import { Svg } from "~/components";
 export default function Login() {
   const router = useRouter();
   const onSubmit = async (values: any) => {
-    await loginApi(values).then((result) => {
-       router.push("/admin")
+    await loginApi(values).then(() => {
+      router.push("/admin");
     });
   };
 
@@ -53,7 +53,11 @@ export default function Login() {
             <div onClick={() => router.push("/register")}>
               <span>
                 Bạn đã có tài khoản ?{" "}
-                <span style={{ color: "green", fontSize: 15,cursor:"pointer" }}>Register</span>
+                <span
+                  style={{ color: "green", fontSize: 15, cursor: "pointer" }}
+                >
+                  Register
+                </span>
               </span>
             </div>
           </Form>

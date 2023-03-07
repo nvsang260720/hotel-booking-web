@@ -7,12 +7,12 @@ import { getUserApi, updateUserApi, createUserApi } from "~/services/api";
 export default function UsersPage({}) {
   const router = useRouter();
   const id = router.query.id;
-  const checkId: any = id !== "create" ? id : undefined
+  const checkId: any = id !== "create" ? id : undefined;
   const [initialValues, setInitValues] = useState();
   const [loading, setLoading] = useState(false);
 
   const getUser = () => {
-    if(checkId) {
+    if (checkId) {
       return getUserApi(checkId).then((result: any) => {
         setInitValues(result?.data?.content);
       });
@@ -21,7 +21,9 @@ export default function UsersPage({}) {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkId]);
+
   const onSubmit = async (values: any) => {
     setLoading(true);
     try {

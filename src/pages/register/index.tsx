@@ -1,18 +1,16 @@
 import style from "./logout.module.css";
-import { useState } from "react";
 import { Form, Input, Button } from "antd";
 import Router from "next/router";
 import { registerApi } from "~/services/api";
 import { Svg } from "~/components";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function Login() {
-  const router = useRouter()
-  const [err, errSet] = useState();
+  const router = useRouter();
   const onSubmit = async (values: any) => {
-    await registerApi(values).then((e)=>{
-      router.push("/admin")
-    })
+    await registerApi(values).then(() => {
+      router.push("/admin");
+    });
   };
 
   return (
@@ -29,11 +27,16 @@ export default function Login() {
           >
             <div>
               <span className={style.logo}>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-              <Svg name={"logo"} width={180} height={180} fill={"#FF5B00"} />
-            </div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Svg
+                    name={"logo"}
+                    width={180}
+                    height={180}
+                    fill={"#FF5B00"}
+                  />
+                </div>
               </span>
-              <span className={style.errText}>{err}</span>
+              <span className={style.errText}></span>
             </div>
             <Form.Item
               label="Email"
@@ -70,7 +73,11 @@ export default function Login() {
             <div onClick={() => Router.push("/login")}>
               <span>
                 Bạn đã có tài khoản ?{" "}
-                <span style={{ color: "green", fontSize: 15,cursor:"pointer" }}>Login</span>
+                <span
+                  style={{ color: "green", fontSize: 15, cursor: "pointer" }}
+                >
+                  Login
+                </span>
               </span>
             </div>
           </Form>
