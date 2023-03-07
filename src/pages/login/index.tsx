@@ -8,7 +8,7 @@ export default function Login() {
   const router = useRouter();
   const onSubmit = async (values: any) => {
     await loginApi(values).then((result) => {
-      console.log(result);
+       router.push("/admin")
     });
   };
 
@@ -22,11 +22,10 @@ export default function Login() {
             wrapperCol={{ span: 17 }}
             initialValues={{ remember: true }}
             onFinish={onSubmit}
-            //onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <Svg name={"logo"} width={120} height={120} fill={"#FF5B00"} />
+              <Svg name={"logo"} width={180} height={180} fill={"#FF5B00"} />
             </div>
             <Form.Item
               label="Email"
@@ -54,7 +53,7 @@ export default function Login() {
             <div onClick={() => router.push("/register")}>
               <span>
                 Bạn đã có tài khoản ?{" "}
-                <span style={{ color: "green", fontSize: 15 }}>Register</span>
+                <span style={{ color: "green", fontSize: 15,cursor:"pointer" }}>Register</span>
               </span>
             </div>
           </Form>
